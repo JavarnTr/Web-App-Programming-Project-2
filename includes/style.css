@@ -1,8 +1,4 @@
-body {
-    margin:0;
-    padding:0;
-}
-
+/* Universal CSS */
 header {
     background-color: #373b38;
     color: white;
@@ -13,6 +9,14 @@ header {
     align-items: center;
 }
 
+body {
+    margin:0;
+    padding:0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .header-buttons {
     display: flex;
     margin-right: 1%;
@@ -20,10 +24,36 @@ header {
 
 .header-buttons button {
     margin: 5px;
-    padding: 10px 20px;
-    
+    padding: 10px 20px; 
+}
+
+a {
+    text-decoration: none;
 }
 
 .company_title {
     margin-right: auto;
 }
+
+footer {
+    margin-top: auto;
+    background-color: #373b38;
+}
+
+/* index.php */
+.title {
+    font-size: 300%;
+    text-align: center;
+}
+
+.store_button {
+    text-align: center;
+}
+
+.content {
+    position: absolute;
+    top: 30%;
+    align-self: center; 
+}
+
+/* store.php */
