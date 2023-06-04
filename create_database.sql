@@ -1,13 +1,17 @@
+drop table if exists orders;
 drop table if exists users;
+drop table if exists order_details;
+drop table if exists products;
+
 create table users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
     firstName VARCHAR(50),
     lastName VARCHAR(50),
+    email VARCHAR(50),
     password VARCHAR(50),
-    email VARCHAR(50)
+    registration_date DATE
 );
 
-drop table if exists products;
 create table products (
     productID INT AUTO_INCREMENT PRIMARY KEY,
     productName VARCHAR(50),
@@ -16,7 +20,6 @@ create table products (
     image VARCHAR(100)
 );
 
-drop table if exists orders;
 create table orders (
     orderID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT,
@@ -25,7 +28,6 @@ create table orders (
     FOREIGN KEY(userID) REFERENCES users(userID)
 );
 
-drop table if exists order_details;
 create table order_details (
     contentID INT AUTO_INCREMENT PRIMARY KEY,
     productID INT,
@@ -34,9 +36,6 @@ create table order_details (
     ship_date DATE,
     FOREIGN KEY(productID) REFERENCES products(productID)
 );
-
-insert into users (userID, firstName, lastName, password, email)
-values (1, 'Bobby', 'Singer', 'singerauto', 'singerauto@gmail.com');
 
 insert into products(productID, productName, price, inventory, image)
 values (1, 'iPhone 8', '129.99', '38', 'images/iphone8');
