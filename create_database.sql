@@ -16,6 +16,7 @@ create table products (
     productID INT AUTO_INCREMENT PRIMARY KEY,
     productName VARCHAR(50),
     price DECIMAL(13,2),
+    description VARCHAR(200),
     inventory INT,
     image VARCHAR(100)
 );
@@ -37,5 +38,5 @@ create table order_details (
     FOREIGN KEY(productID) REFERENCES products(productID)
 );
 
-insert into products(productID, productName, price, inventory, image)
-values (1, 'iPhone 8', '129.99', '38', 'images/iphone8');
+insert into products(productID, productName, price, description, inventory, image)
+values (1, 'iPhone 8', '129.99', 'Reliable phone', '38', 'images/iphone8');
