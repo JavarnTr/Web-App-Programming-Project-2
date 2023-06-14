@@ -32,9 +32,11 @@ create table orders (
 create table order_details (
     contentID INT AUTO_INCREMENT PRIMARY KEY,
     productID INT,
+    orderID INT,
     quantity INT,
     price DECIMAL(13,2),
-    FOREIGN KEY(productID) REFERENCES products(productID)
+    FOREIGN KEY(productID) REFERENCES products(productID),
+    FOREIGN KEY(orderID) REFERENCES orders(orderID)
 );
 
 insert into products(productID, productName, price, description, inventory, image)
