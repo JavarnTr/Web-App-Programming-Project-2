@@ -34,7 +34,6 @@ create table order_details (
     productID INT,
     quantity INT,
     price DECIMAL(13,2),
-    ship_date DATE,
     FOREIGN KEY(productID) REFERENCES products(productID)
 );
 
