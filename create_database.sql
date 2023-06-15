@@ -1,8 +1,14 @@
+drop table if exists order_details;
 drop table if exists products;
 drop table if exists orders;
 drop table if exists users;
-drop table if exists order_details;
+drop table if exists languages;
 
+create table languages (
+    languageID INT AUTO_INCREMENT PRIMARY KEY,
+    language VARCHAR(50),
+    lang_eng VARCHAR(50)
+);
 
 create table users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,16 +48,6 @@ create table order_details (
     FOREIGN KEY(orderID) REFERENCES orders(orderID)
 );
 
-create table posts (
-    postID INT AUTO_INCREMENT PRIMARY KEY,
-    threadID INT,
-    userID INT,
-    message VARCHAR(200),
-    datePosted DATE,
-    FOREIGN KEY(userID) REFERENCES users(userID),
-    FOREIGN KEY(threadID) REFERENCES threads(threadID)
-);
-
 create table threads (
     threadID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT,
@@ -61,10 +57,14 @@ create table threads (
     FOREIGN KEY(languageID) REFERENCES languages(languageID)
 );
 
-create table languages (
-    languageID INT AUTO_INCREMENT PRIMARY KEY,
-    language VARCHAR(50),
-    lang_eng VARCHAR(50)
+create table posts (
+    postID INT AUTO_INCREMENT PRIMARY KEY,
+    threadID INT,
+    userID INT,
+    message VARCHAR(200),
+    datePosted DATE,
+    FOREIGN KEY(userID) REFERENCES users(userID),
+    FOREIGN KEY(threadID) REFERENCES threads(threadID)
 );
 
 create table words (
@@ -89,7 +89,6 @@ create table words (
     post_a_reply VARCHAR(50),
     FOREIGN KEY(languageID) REFERENCES languages(languageID)
 );
-
 
 insert into products(productID, productName, price, description, inventory, image)
 values (1, 'iPhone 8', '129.99', 'Reliable phone', '38', 'images/iphone8');
