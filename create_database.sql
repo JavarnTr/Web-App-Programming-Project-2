@@ -17,6 +17,7 @@ create table users (
     email VARCHAR(50),
     password VARCHAR(50),
     languageID INT,
+    time_zone VARCHAR(50),
     registration_date DATE,
     FOREIGN KEY(languageID) REFERENCES languages(languageID)
 );
@@ -93,5 +94,22 @@ create table words (
 insert into products(productID, productName, price, description, inventory, image)
 values (1, 'iPhone 8', '129.99', 'Reliable phone', '38', 'images/iphone8');
 
-insert into users(userID, firstName, lastName, email, password, registration_date)
-values (1, 'John', 'Doe', 'johndoe@gmail.com', 'password', '2018-01-01');
+insert into users(userID, firstName, lastName, email, password, registration_date, languageID, time_zone)
+values (1, 'John', 'Doe', 'johndoe@gmail.com', SHA1('password'), '2018-01-01', 1, 'America/New_York'),
+    (2, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', 7, 'Europe/Berlin'),
+    (3, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', 4, 'Europe/Oslo'),
+    (4, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', 2, 'America/Sao_Paulo'),
+    (5, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', 1, 'Pacific/Auckland');
+
+INSERT INTO words VALUES
+(NULL, 1, 'Forum','<p>Welcome to the Forum</p>', 'Home', 'Forum Home', 'Language', 'Register', 'Login', 'Logout', 'New Thread', 'Subject', 'Body', 'Submit', 'Posted on', 'Posted by', 'Replies', 'Latest Reply', 'Post a Reply');
+
+insert into languages(language, lang_eng)
+values ('English', 'English'),
+    ('Português', 'Portuguese'),
+    ('Français', 'French'),
+    ('Norsk', 'Norwegian'),
+    ('Romanian', 'Romanian'),
+    ('Deutsch', 'German'),
+    ('Srpski', 'Serbian'),
+    ('Nederlands', 'Dutch');
