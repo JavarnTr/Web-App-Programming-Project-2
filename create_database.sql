@@ -1,7 +1,8 @@
+drop table if exists products;
 drop table if exists orders;
 drop table if exists users;
 drop table if exists order_details;
-drop table if exists products;
+
 
 create table users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,7 +10,9 @@ create table users (
     lastName VARCHAR(50),
     email VARCHAR(50),
     password VARCHAR(50),
-    registration_date DATE
+    languageID INT,
+    registration_date DATE,
+    FOREIGN KEY(languageID) REFERENCES languages(languageID)
 );
 
 create table products (
