@@ -5,7 +5,6 @@ drop table if exists posts;
 drop table if exists threads;
 drop table if exists users;
 
-
 create table users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
     firstName VARCHAR(50),
@@ -13,6 +12,7 @@ create table users (
     email VARCHAR(50),
     password VARCHAR(50),
     registration_date DATE,  
+    admin BOOLEAN DEFAULT FALSE
 );
 
 create table products (
@@ -46,7 +46,7 @@ create table threads (
     threadID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT,
     subject VARCHAR(50),
-    FOREIGN KEY(userID) REFERENCES users(userID),
+    FOREIGN KEY(userID) REFERENCES users(userID)
 );
 
 create table posts (
@@ -63,11 +63,8 @@ create table posts (
 insert into products(productID, productName, price, description, inventory, image)
 values (1, 'iPhone 8', '129.99', 'Reliable phone', '38', 'images/iphone8');
 
-insert into users(userID, firstName, lastName, email, password, registration_date)
-values (1, 'John', 'Doe', 'johndoe@gmail.com', SHA1('password'), '2018-01-01'),
-    (2, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01'),
-    (3, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01'),
-    (4, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01'),
-    (5, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01');
+insert into users(userID, firstName, lastName, email, password, registration_date, admin)
+values (1, 'John', 'Doe', 'johndoe@gmail.com', SHA1('password'), '2018-01-01', TRUE),
+    (2, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', FALSE);
 
 
