@@ -59,12 +59,9 @@ create table posts (
     FOREIGN KEY(threadID) REFERENCES threads(threadID)
 );
 
-
 insert into products(productID, productName, price, description, inventory, image)
 values (1, 'iPhone 8', '129.99', 'Reliable phone', '38', 'images/iphone8');
 
 insert into users(userID, firstName, lastName, email, password, registration_date, admin)
 values (1, 'John', 'Doe', 'johndoe@gmail.com', SHA1('password'), '2018-01-01', TRUE),
     (2, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', FALSE);
-
-
