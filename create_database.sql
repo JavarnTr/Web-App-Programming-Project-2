@@ -63,5 +63,9 @@ insert into products(productID, productName, price, description, inventory, imag
 values (1, 'iPhone 8', '129.99', 'Reliable phone', '38', 'images/iphone8');
 
 insert into users(userID, firstName, lastName, email, password, registration_date, admin)
-values (1, 'John', 'Doe', 'johndoe@gmail.com', SHA1('password'), '2018-01-01', TRUE),
-    (2, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', FALSE);
+values (2, 'Jane', 'Doe', 'janedoe@gmail.com', SHA1('password'), '2018-01-01', FALSE),
+    (3, 'Barry', 'Allen', 'Allen@gmail.com', SHA1('password'), '2018-01-01', FALSE),
+    (4, 'Oliver', 'Queen', 'Oliver@gmail.com', SHA1('password'), '2018-01-01', FALSE),
+    (5, 'Bruce', 'Wayne', 'Wayne@gmail.com', SHA1('password'), '2018-01-01', FALSE),
+    (6, 'Clark', 'Kent', 'Kent@gmail.com', SHA1('password'), '2018-01-01', FALSE),
+    (7, 'Tony', 'Stark', 'Stark@gmail.com', SHA1('password'), '2018-01-01', FALSE);
