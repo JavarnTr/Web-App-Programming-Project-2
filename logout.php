@@ -5,6 +5,7 @@ if (!isset($_COOKIE['userID'])) {
     redirect_user();
 } else {
     setcookie ('userID', '', time()-3600, '/', '', 0, 0);
+    setcookie ('admin', '', time()-3600, '/', '', 0, 0);
 }
 
 $page_title = 'Logged Out';

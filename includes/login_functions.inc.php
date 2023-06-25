@@ -27,7 +27,7 @@ function check_login($dbc, $email = '', $pass = '') {
     }
 
     if (empty($errors)) {
-        $q = "select userID, firstName from users where email = '$e' and password=SHA1('$p')";
+        $q = "select userID, firstName, admin from users where email = '$e' and password=SHA1('$p')";
         $r = @mysqli_query ($dbc, $q); 
 
         if (mysqli_num_rows($r) == 1) {

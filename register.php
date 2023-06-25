@@ -37,25 +37,26 @@ if (!empty($_POST['pass1'])) {
 if (empty($errors)) {
     require ('includes/dbconnect.php');
 
-    $q = "insert into users (firstName, lastName, email, password, registration_date) VALUES ('$fn', '$ln', '$e', SHA1('$p'), NOW() )";
-    $r = @mysqli_query ($dbc, $q);
-    
-    if($r) {
-        echo '<p>Account registered.</p>';
-    } else {
-        echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
-    }
+    $check_email = "SELECT * FROM users WHERE email = '$e'";
+    $checked_email = mysqli_query($dbc, $check_email);
 
-    mysqli_close($dbc);
-    include ('includes/footer.html');
-} else {
-    echo '<h1>Error!</h1>
-            <p class="error">The following error(s) occurred:<br />';
-            foreach ($errors as $msg) {
-                echo " - $msg<br />\n";
-            }
-            echo '</p><p>Please try again.</p><p><br /></p>';
-}
+    if (mysqli_num_rows($checked_email) > 0) {
+        echo '<br>Email already registered.';
+    } else  {
+        $admin = isset($_POST['admin']) ? 1 : 0;
+
+        $q = "insert into users (firstName, lastName, email, password, registration_date, admin) VALUES ('$fn', '$ln', '$e', SHA1('$p'), NOW(), $admin)";
+        $r = @mysqli_query ($dbc, $q);
+        
+        if($r) {
+            echo '<p>Account registered.</p>';
+        } else {
+            echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
+        }
+    
+        mysqli_close($dbc);
+    }    
+} 
 ?>
 
 <h1>Register a new account</h1>
@@ -65,6 +66,7 @@ if (empty($errors)) {
     <p>Email: <input type="text" name="email" size="15" maxlength="20" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required /></p>
     <p>Password: <input type="password" name="pass1" size="15" maxlength="20" value="<?php if(isset($_POST['pass1'])) echo $_POST['pass1']; ?>" required /></p>
     <p>Confirm Password: <input type="password" name="pass2" size="15" maxlength="20" value="<?php if(isset($_POST['pass2'])) echo $_POST['pass2']; ?>" required /></p>
+    <p>Admin: <input type="checkbox" name="admin" <?php if(isset($_POST['admin'])) echo 'checked'; ?> /></p>
     <p><input type="submit" name="submit" value="Register" /></p>
 </form>
 <?php include ('includes/footer.html'); ?>

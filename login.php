@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($check) {
         setcookie ('userID', $data['userID'], time()+3600, '/', '', 0, 0);
         setcookie ('firstName', $data['firstName'], time()+3600, '/', '', 0, 0);
+        setcookie ('admin', $data['admin'], time()+3600, '/', '', 0, 0);
         redirect_user('account.php');
     } else {
         $errors = $data;
